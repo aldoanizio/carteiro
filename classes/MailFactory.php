@@ -147,7 +147,7 @@ class MailFactory
             {
                 // Return only raw body content
 
-                if(Arr::has($views, 'raw') && !empty(Arr::get($views, 'raw')))
+                if(Arr::has($views, 'raw') && Arr::get($views, 'raw'))
                 {
 
                     return [null, null, Arr::get($views, 'raw')];

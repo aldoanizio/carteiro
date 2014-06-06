@@ -282,7 +282,7 @@ class Mail
 
     public function useConn($config)
     {
-        if(empty($this->config->get('carteiro::config.connections.' . $config)))
+        if($this->config->get('carteiro::config.connections.' . $config) === null)
         {
             throw new \InvalidArgumentException(vsprintf("%s(): A valid config name is required to load connection settings.", [__METHOD__]));
         }
