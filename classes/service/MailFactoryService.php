@@ -15,7 +15,7 @@ use \carteiro\MailFactory;
  * @author  Aldo Anizio Lugão Camacho
  */
 
-class MailFactoryService extends \mako\core\services\Service
+class MailFactoryService extends \mako\application\services\Service
 {
 	/**
 	 * Registers the service.
