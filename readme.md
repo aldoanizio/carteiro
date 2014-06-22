@@ -202,6 +202,16 @@ $mail->debug(true);
 $mail->debug(false);
 ```
 
+### Change debug file path
+
+By default the package uses default mako debug files but you can define another debug file location. Use the ``'debugFilePath()'`` method to change file location.
+
+When you call this method you don't need to enable debug using ``$mail->debug(true)``.
+
+```php
+$mail->debugFilePath('my/new/file/path');
+```
+
 ### Change server parameters
 
 In config file you can define multiple ``connections``, each of them with their own settings. The default connection settings used is defined in ``''default' => 'primary'`` flag.

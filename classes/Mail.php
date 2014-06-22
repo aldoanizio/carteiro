@@ -12,6 +12,8 @@ use \mako\config\Config;
 use \mako\utility\Arr;
 
 // Monolog
+use \Monolog\Logger;
+use \Monolog\Handler\StreamHandler;
 use \Psr\Log\LoggerInterface;
 
 
@@ -90,6 +92,14 @@ class Mail
      */
 
     protected $debug = false;
+
+    /**
+     * Debug lines to to write in log file
+     *
+     * @var array
+     */
+
+    protected $debugLines = [];
 
     /**
      * STMP server address
@@ -367,6 +377,23 @@ class Mail
     }
 
     /**
+     * Set different debug file location.
+     *
+     * @access  public
+     * @param   string          $path  File path
+     * @return  \carteiro\Mail
+     */
+
+    public function debugFilePath($path)
+    {
+        $this->debug(true);
+
+        $this->logger->pushHandler(new StreamHandler($path, Logger::DEBUG));
+
+        return $this;
+    }
+
+    /**
      * Set email "From" address / name
      *
      * @access  public
@@ -626,6 +653,20 @@ class Mail
         // Disconnect
 
         $this->disconnect();
+
+        // Write debug
+
+        if($this->debug)
+        {
+            // Spin debug lines
+
+            foreach($this->debugLines as $line)
+            {
+                $this->logger->debug($line);
+            }
+        }
+
+        // Result
 
         return $result;
     }
@@ -1019,7 +1060,7 @@ class Mail
 
         if($this->debug)
         {
-            $this->logger->debug('<code><strong>' . $string . '</strong></code><br/>');
+            $this->debugLines[] = '<code><strong>Request: ' . $string . '</strong></code><br/>';
         }
 
         // Send
@@ -1056,7 +1097,7 @@ class Mail
 
         if($this->debug)
         {
-            $this->logger->debug('<code>' . $response . '</code><br/>');
+            $this->debugLines[] = '<code>Response: ' . $response . '</code><br/>';
         }
 
         // Return
