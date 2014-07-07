@@ -356,7 +356,7 @@ class Mail
      * @return  array
      */
 
-    public function getFrom($email, $name = null)
+    public function getFrom()
     {
         return $this->from;
     }
