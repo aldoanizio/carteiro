@@ -54,7 +54,7 @@ class Mail
     protected $connection = [];
 
     /**
-     * Server address used to send in HELO
+     * Server address used to send in HELO / EHLO request
      *
      * @var string
      */

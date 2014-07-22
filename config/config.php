@@ -13,7 +13,7 @@ return
     'default' => 'primary',
 
     /**
-     * You may want to change the origin of the HELO request.
+     * You may want to change the origin of the HELO / EHLO request.
      * Setting default value as "localhost" may cause email to be considered spam.
      * http://stackoverflow.com/questions/5294478/significance-of-localhost-in-helo-localhost
      */
