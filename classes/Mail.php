@@ -391,6 +391,8 @@ class Mail
     public function debugFilePath($path)
     {
         $this->debug(true);
+        
+        $this->logger->popHandler();
 
         $this->logger->pushHandler(new StreamHandler($path, Logger::DEBUG));
 
