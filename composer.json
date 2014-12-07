@@ -1,7 +1,6 @@
 {
     "name": "aldoanizio/carteiro",
-    "type": "mako-package",
-    "description": "Lightweight SMTP Mailer Class for Mako Framework 4.0",
+    "description": "Lightweight SMTP Mailer Class for Mako Framework 4.2",
     "keywords": ["mako", "framework", "mail"],
     "homepage": "https://github.com/aldoanizio/carteiro",
     "authors": [
@@ -13,10 +12,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "carteiro\\": "classes"
+            "aldoanizio\\carteiro\\": "src"
         }
-    },
-    "require": {
-        "composer/installers": "*"
     }
 }

@@ -5,13 +5,17 @@
  * @license    http://www.makoframework.com/license
  */
 
-namespace carteiro;
+namespace aldoanizio\carteiro\mailer;
+
 
 // Mako
+
 use \mako\config\Config;
 use \mako\utility\Arr;
 
+
 // Monolog
+
 use \Monolog\Logger;
 use \Monolog\Handler\StreamHandler;
 use \Psr\Log\LoggerInterface;
@@ -391,7 +395,7 @@ class Mail
     public function debugFilePath($path)
     {
         $this->debug(true);
-        
+
         $this->logger->popHandler();
 
         $this->logger->pushHandler(new StreamHandler($path, Logger::DEBUG));

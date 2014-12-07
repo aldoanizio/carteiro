@@ -5,17 +5,21 @@
  * @license    http://www.makoframework.com/license
  */
 
-namespace carteiro;
+namespace aldoanizio\carteiro\mailer;
+
 
 // Carteiro Mailer
-use \carteiro\Mail;
+
+use \aldoanizio\carteiro\mailer\Mail;
 
 // Mako
+
 use \mako\config\Config;
 use \mako\view\ViewFactory;
 use \mako\utility\Arr;
 
 // Monolog
+
 use \Psr\Log\LoggerInterface;
 
 

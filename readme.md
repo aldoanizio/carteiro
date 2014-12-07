@@ -1,6 +1,6 @@
 # Carteiro Mailer
 
-This is a lightweight SMTP mailer package for Mako Framework 4.0.
+This is a lightweight SMTP mailer package for Mako Framework >=4.2.
 
 ## Install
 
@@ -10,7 +10,7 @@ Use composer to install. Simply add package to your project.
 composer require aldoanizio/carteiro:*
 ```
 
-So now you can update your project and install package with a single command.
+So now you can update your project with a single command.
 
 ```php
 composer update
@@ -19,17 +19,22 @@ composer update
 
 ### Register Service
 
-After installing you'll have to register a new service in your ``app/config/application.php`` file.
+After installing you'll have to register the package in your ``app/config/application.php`` file.
 
 ```php
     /**
-     * Services to register in the dependecy injection container.
+     * ---------------------------------------------------------
+     * Packages
+     * ---------------------------------------------------------
+     *
+     * Packages to boot during the application boot sequence.
+     * They will be booted in the order that they are defined.
      */
 
-    'services' =>
+    'packages' =>
     [
         ....
-        'carteiro\service\MailFactoryService',
+        'aldoanizio\carteiro\CarteiroPackage',
     ],
 ```
 
