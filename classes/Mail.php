@@ -574,7 +574,7 @@ class Mail
 
     public function html($html)
     {
-        $this->html = $html;
+        $this->html = $this->normalize($html);
 
         return $this;
     }
@@ -589,7 +589,7 @@ class Mail
 
     public function text($text)
     {
-        $this->text = wordwrap(strip_tags($text), $this->wordwrap);
+        $this->text = $this->normalize(wordwrap(strip_tags($text), $this->wordwrap));
 
         return $this;
     }
@@ -1131,6 +1131,34 @@ class Mail
         {
             return '<' . $recipient['email'] . '>';
         }
+    }
+    
+    /**
+     * Normalize content to match RFC-821 max 1000 characters line length including the CRLF
+     *
+     * @access  private
+     * @param   string   $lines  Lines content
+     * @return  string
+     */
+
+    private function normalize($lines)
+    {
+        // Replace line breaks
+
+        $lines = str_replace("\r", "\n", $lines);
+
+        // Split lines
+
+        $content = '';
+        foreach(explode("\n", $lines) as $line)
+        {
+            foreach(str_split($line, 998) as $result)
+            {
+                $content .= $result . $this->newline;
+            }
+        }
+
+        return $content;
     }
 
     /**
